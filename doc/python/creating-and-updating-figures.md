@@ -472,7 +472,7 @@ Suppose the updates that you want to make to a collection of traces depend on th
 
 As its first argument, the `for_each_trace` method accepts a function that accepts and updates one trace at a time. Like `update_traces`, `for_each_trace` also accepts `selector`, `row`, and `col` arguments to control which traces should be considered.
 
-Here is an example of using `for_each_trace` to replace the equal-sign with a colon in the legend name of each trace in a figure produced by Plotly Express.
+Here is an example of using `for_each_trace` to replace the equal-sign with a colon in the hover tooltip name of each trace in a figure produced by Plotly Express.
 
 ```python
 import pandas as pd
@@ -481,7 +481,7 @@ df = px.data.iris()
 fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species")
 
 fig.for_each_trace(
-    lambda trace: trace.update(name=trace.name.replace("=", ": ")),
+    lambda trace: trace.update(hovertemplate=trace.hovertemplate.replace("=", ": ")),
 )
 
 fig.show()
